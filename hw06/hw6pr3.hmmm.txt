@@ -1,0 +1,14 @@
+0 read r1 #n
+1 jeqzn r1 13 #jump to halt if n == 0
+2 setn r2 0 #numspot1
+3 setn r3 1 #numspot0
+4 write r3
+5 addn r1 -1
+6 jeqzn r1 13 #jump to halt if n == 1
+7 add r4 r2 r3 # r4 = r3 + r2
+8 write r4 #loop start
+9 copy r2 r3
+10 copy r3 r4
+11 addn r1 -1
+12 jgtzn r1 7 #loop again if n > 0 
+13 halt

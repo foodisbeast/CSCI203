@@ -1,0 +1,9 @@
+#Get input, return input^3, count down until 0 printing each integer
+0 read r1 #r1 -> input from user
+1 mul r2 r1 r1 #r2 -> input^2
+2 mul r2 r2 r1 #r2 -> input^3
+3 write r2 #ouptut r2
+4 addn r2 -1 #r2=r2-1
+5 jgtzn r2 3 #if r2>0 print and subtract again
+6 write r2 #prints the final 0
+7 halt

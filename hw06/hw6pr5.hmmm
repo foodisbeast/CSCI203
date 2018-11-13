@@ -1,0 +1,43 @@
+#VARIABLES
+#   r1 -> X
+#   r2 -> Y
+#   r3 -> Product
+#   r14 -> Return address
+#   r15 -> Stack pointer
+#STACK
+#   100 -> POS I
+#   101 -> POS II
+#   102 -> POS I
+#   l03 -> POS II
+#############################
+#MAIN PROGRAM
+0 read r1 #X
+1 read r2 #Y
+2 setn r15 100 #set stack pointer to 50
+3 calln r14 6 #call recursive function
+4 write r3 #output product
+5 halt #fin
+#RECURSIVE FUNCTION
+6 jeqzn r2 19 #test base case Y==0
+
+#store stuffs
+7 storer r1 r15 #store Y in stack pos I
+8 addn r15 1 #increment
+9 storer r14 r15 #store r14 in stack pos II
+10 addn r15 1 #increment
+
+11 addn r2 -1 #Calc Y - 1
+12 calln r14 6 #recursive call
+
+#recover stuffs
+13 addn r15 -1 #decrement
+14 loadr r14 r15 #load r14 from stack pos II
+15 addn r15 -1
+16 loadr r1 r15 #load r1 from stack pos I
+
+17 mul r3 r1 r3 #Product = Product * X
+18 jumpr r14 #return to caller
+
+#BASE CASE
+19 setn r3 1
+20 jumpr r14

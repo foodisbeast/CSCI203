@@ -1,0 +1,32 @@
+#STACK
+    #100: sum
+    #101: sum() return address
+    #102: square(n) return value
+###MAIN PROGRAM###
+0 setn r15 100 #set stack pointer to 100
+1 read r1 #Store n in r1
+2 calln r14 6 #call sum function
+3 loadn r3 100 #load sum from stack-100
+4 write r3 #write r3
+5 halt #end program
+###SUM FUNCTION### NON-LEAF
+6 addn r15 1 #move stack pointer to 101
+7 storer r14 r15 #Store return location in stack-101
+    #Loop Start
+8 calln r14 19 #call square function
+9 loadr r2 r15 #load square value from function into r2
+10 addn r15 -2 #move stack pointer to 100
+11 loadr r3 r15 #load sum from stack-100 into r3
+12 add r3 r3 r2 #r3 = r3 + r2 -> sum = sum + square
+13 storer r3 r15 #store sum in stack-100 
+14 addn r1 -1 #n = n-1
+15 addn r15 1 #move stack pointer to 101
+16 jgtzn r1 8 #loop if >0
+    #Loop End
+17 loadr r14 r15 #load return address from stack-101
+18 jumpr r14
+###SQUARE FUNCTION### LEAF
+19 addn r15 1 #move stack pointer to 102
+20 mul r2 r1 r1 #r2 = r1^2 -> r2 = n^2
+21 storer r2 r15 #store n^2 in stack-102
+22 jumpr r14 #jump back into sum()

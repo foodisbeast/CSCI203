@@ -1,0 +1,6 @@
+0       read    r1              # Get an integer from the user
+                                # and hold it in register r1
+1       read    r2              # ditto, for register r2
+2       mul     r3, r1, r2      # r3 = r1 * r2
+3       write   r3              # write out (print) the contents of r3
+4       halt                    # stop here

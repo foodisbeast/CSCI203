@@ -1,0 +1,19 @@
+0 read r1 # input a
+1 read r2 # input c
+2 read r3 # input m
+3 read r4 # input X_0
+4 read r5 # input N
+5 mul r4 r4 r1 #Xn = Xn * a
+6 add r4 r4 r2 #Xn = Xn + c
+7 mod r4 r4 r3 #Xn = Xn % m
+8 addn r5 -1 #N = N - 1
+9 write r4 #Print Xn
+10 jgtzn r5 5 #loop till N == 0 
+11 halt
+
+# m = 100
+# m % 2,4,5 == 0
+# (a-1) % 2,4,5 == 0
+# a = 21
+# m % 3 != 0
+# c = 3
