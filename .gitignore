@@ -5,6 +5,7 @@ ML/
 ###################
 *.xlsx
 *.log
+*.DS_STORE
 
 # Packages #
 ############
